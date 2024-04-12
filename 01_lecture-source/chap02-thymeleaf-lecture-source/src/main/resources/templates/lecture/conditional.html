@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Conditional 제어문</h1>
+    <h2>th:if , th:unless</h2>
+    <h3>
+        th:if 변수 표현식의 OGNL을 활용한 조건식으로 조건문을 작성하면 결과가
+        true 일 때 해당 태그 범위가 처리된다.
+        th:unless 는 표현식의 OGNL 을 활용한 결과가 false 일 때
+        해당 태그 범위가 처리된다.
+    </h3>
+
+    <p th:if="${num > 0}">넘어온 값은 0보다 큽니당</p>
+    <p th:if="${num < 0}">넘어온 값은 0보다 작아유</p>
+    <p th:unless="${num < 0}">넘어온 값은 0보다 크다</p>
+
+    <!-- th:block 사용도 가능하다. -->
+    <th:block th:if="${str == '사과'}">
+        <p>나는 사과가 좋아요</p>
+    </th:block>
+    <th:block th:if="${str == '바나나'}">
+        <p>나는 바나나가 좋아요</p>
+    </th:block>
+
+    <!-- and 나 or 를 사용해서 다중 조건 처리도 할 수 있다. -->
+    <p th:if="${ num > 0 or num <= 10}">1부터 10까지의 양수</p>
+    <p th:if="${ str != null and str == '바나나'}">바나나가 좋아유</p>
+    <p th:if="${ !#strings.isEmpty(str) and str == '바나나'}">바나나 조아유</p>
+
+    <h2>th:switch, th:case</h2>
+    <h3>해당 조건의 값이 어떤 case 해당되는 지에 따라서 태그를 선택할 수 있다.</h3>
+    <th:block th:switch="${str}">
+        <span th:case="사과">사과가 선택되었습니다</span>
+        <span th:case="바나나">바나나가 선택되었습니다.</span>
+    </th:block>
+</body>
+</html>
