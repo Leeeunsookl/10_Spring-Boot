@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expression</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+<body>
+    <h1 style="text-align: center; color: aqua">Expression(표현식)</h1>
+    <h2>표현식 1 - 변수 표현식 ${...}</h2>
+
+    <!--
+        parameter 로 넘어온 경우는 param, session attribute 일 경우에는 session,
+        model 에 담겨 온 경우는 따로 적지 않는다(이 친구는 나중에)
+     -->
+
+    <!--
+        제공되는 표현식의 종류
+        변수 표현식 : ${...}
+        선택 표현식 : *{...}
+        메시지 표현식 : #{...}
+        링크 표현식 : @{...}
+        조각 표현식 : ~{...}
+        인라인 표현식 : [[...]], [(...)]
+    -->
+
+    <p th:text="${ param.title }"></p>
+    <p th:text="${ param.no[0] }"></p>
+    <p th:text="${ param.no[1] }"></p>
+<!--    <p th:text="${ param.no[2] }"></p>-->
+    <!-- 파라미터가 존재하지 않으면 무시하지 않고 에러가 발생한다. -->
+
+    <h2>표현식 2 - 메세지 표현식 #{...}</h2>
+    <p th:text="#{ message.value }"></p>
+
+    <h2>표현식 3 - 링크 표현식 @{...}</h2>
+    <a th:href="@{/}">메인으로</a>
+
+    <h2>표현식 4 - 선택 변수 표현식 *{...}</h2>
+
+
+</body>
+</html>
